@@ -75,8 +75,14 @@ Escolhida por possuir processos bem definidos e ideais para modelagem relacional
 - Assinatura digital obrigatória no contrato
 
 ## 10. Fluxogramas
-![Fluxo](docs/fluxogramas/fluxo-cotacao-locacao.png)
-*Subir imagens em /docs/fluxogramas/*
+![Fluxo 00](Flowchart%20(00).jpg)
+![Fluxo 01](Flowchart%20(01).jpg)
+![Fluxo 02](Flowchart%20(02).jpg)
+![Fluxo 03](Flowchart%20(03).jpg)
+![Fluxo 04](Flowchart%20(04).jpg)
+![Fluxo 05](Flowchart%20(05).jpeg)
+![Fluxo 06](Flowchart%20(06).jpeg)
+![Fluxo 07](Flowchart%20(07).jpeg)
 
 ## 11. Entidades
 PESSOA, CLIENTE, FUNCIONARIO, ENDERECO, PESSOA_ENDERECO, CATEGORIA, PRODUTO, COTACAO, ITEM_COTACAO, LOCACAO, PAGAMENTO, AVARIA, MULTA
@@ -111,7 +117,7 @@ Ver planilha em `/docs/dicionario-dados.xlsx`
 
 ## 16. DER
 ### Conceitual
-![DER Conceitual](docs/der-conceitual.png)
+![DER Conceitual](DIAGRAMA.PNG)
 
 
 ## 17. Justificativas Técnicas
