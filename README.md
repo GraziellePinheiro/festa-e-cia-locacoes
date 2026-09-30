@@ -117,7 +117,7 @@ Ver planilha em `/docs/dicionario-dados.xlsx`
 
 ## 16. DER
 ### Conceitual
-![DER Conceitual](DIAGRAMA.PDF)
+![DER Conceitual](DIAGRAMA.PNG)
 
 
 ## 17. Justificativas Técnicas
