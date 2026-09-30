@@ -127,4 +127,20 @@ Ver planilha em `/docs/dicionario-dados.xlsx`
 - LOCACAO separada de COTACAO para manter histórico de orçamentos não convertidos
 
 ## 18. Conclusão
-O projeto centraliza em um banco relacional único as informações hoje dispersas, eliminando conflitos de reserva, divergências de estoque e prejuízos com avarias, servindo como núcleo para um futuro ERP modular.
+O projeto centraliza em um banco relacional único...
+
+## 👥 Colaboradores
+
+Agradecimento especial a todos que contribuíram para este projeto:
+
+**Grupo 2:**
+- **JOÃO PEDRO MOREIRA DIAS PEREIRA** - [LinkedIn](https://www.linkedin.com/in/joao-moreira-a38734215) | [GitHub](https://github.com/moreirajoao17-max)
+- **GRAZIELLE PINHEIRO BARRETO** - [LinkedIn](https://www.linkedin.com/in/grazielle-pinheiro-4b0bb793) | [GitHub](https://github.com/GraziellePinheiro)
+- **LUCAS MOREIRA LIMA** - [LinkedIn](https://www.linkedin.com/in/lucas-moreira-7134b2437) | [GitHub](https://github.com/LucMLima640)
+- **JULIA COSTA DE JESUS** - [GitHub](https://github.com/juliacostadejesus-stack)
+- **LETÍCIA ALARCON GOMES DE LIMA** - [LinkedIn](https://www.linkedin.com/in/leti-alarc-834a64436) | [GitHub](https://github.com/letialarc-cmyk)
+- **ANA CAROLINA SANTANA DOS SANTOS** - [LinkedIn](https://www.linkedin.com/in/ana-carolina-santana-dos-santos-7850a1316/) | [GitHub](https://github.com/anacsantos-tech)
+- **CESAR AUGUSTO VIVODA CRUZ** - [LinkedIn](https://www.linkedin.com/in/cesar-vivoda-a66209208) | [GitHub](https://github.com/Vivoda81)
+- **DANILO GOMES** - [LinkedIn](https://www.linkedin.com/in/danilo-gomes-739554437/) | [GitHub](https://github.com/danilodevfullstack07)
+- **ÉRIKA GABRIELA BUENO DA SILVA** - [LinkedIn](http://www.linkedin.com/in/erika-gabriela-bueno-da-silva-66b695237) | [GitHub](https://github.com/Erikasilva23)
+- **LETHICIA GOMES DE SOUZA** - [LinkedIn](https://www.linkedin.com/in/lethícia-gomes-038a81436/) | [GitHub](https://github.com/lezlls)
