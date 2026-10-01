@@ -40,25 +40,32 @@ Quem são seus principais clientes?
 Quais são seus principais setores?
 
   ⦁	Atendimento / Comercial: responsável por orçamentos, cotações, reservas e geração de contratos. 
+  
   ⦁	Estoque / Logística: controla a disponibilidade, separação, saída, transporte e retorno dos itens. 
+  
   ⦁	Financeiro: controla pagamentos, recebimentos de sinais, débitos pendentes e cobrança de multas por atraso ou avaria. 
 
 Como funciona atualmente?
 
   Atualmente, a empresa busca modernizar seu controle operacional por meio de um sistema web integrado com banco de dados relacional. O funcionamento está estruturado da seguinte forma: 
 
-  ⦁	Cadastro: todos os clientes, produtos e usuários são cadastrados e armazenados de forma centralizada no banco de dados. 
-  ⦁	Consulta de Disponibilidade: quando o cliente realiza o acesso ao site, obtém todos os produtos disponíveis em estoque, alguns com disponibilidade sob consulta. 
-  ⦁	Locação: ao confirmar o pedido, o sistema gera o contrato, registra as datas de retirada e devolução, vincula os itens ao cliente e altera o status dos produtos para "locado". 
-  ⦁	Controle de Retorno e Pagamento: na devolução dos produtos, o sistema realiza a baixa no estoque, verifica possíveis avarias e controla o status da quitação financeira. 
+  ⦁	Cadastro: todos os clientes, produtos e usuários são cadastrados e armazenados de forma centralizada no banco de dados.
   
-Toda a operação será integrada, eliminando a duplicidade de informações e a perda de dados ocorridas no controle manual, garantindo agilidade e segurança. 
+  ⦁	Consulta de Disponibilidade: quando o cliente realiza o acesso ao site, obtém todos os produtos disponíveis em estoque, alguns com disponibilidade sob consulta.
+  
+  ⦁	Locação: ao confirmar o pedido, o sistema gera o contrato, registra as datas de retirada e devolução, vincula os itens ao cliente e altera o status dos produtos para "locado".
+  
+  ⦁	Controle de Retorno e Pagamento: na devolução dos produtos, o sistema realiza a baixa no estoque, verifica possíveis avarias e controla o status da quitação financeira.
+    
+  Toda a operação será integrada, eliminando a duplicidade de informações e a perda de dados ocorridas no controle manual, garantindo agilidade e segurança. 
 
 
 Quais informações são importantes para o negócio?
 
   ⦁	Para o cliente: nome/razão social, CPF/CNPJ, telefone, e-mail e endereço completo de entrega. 
+  
   ⦁	Para o produto: nome, código (SKU), quantidade em estoque, valor da diária e status (disponível, locado, em manutenção, inutilizado/perda). 
+  
   ⦁	Para a locação: data da festa, data/hora de retirada e devolução, lista de itens, valor total, forma de pagamento, comprovantes de sinal e contrato.
 
 
@@ -97,77 +104,134 @@ Mais do que um vendedor, nosso Representante Comercial será um elo de confianç
 
 ## ETAPA 03 - IDENTIFICAÇÃO DOS PROCESSOS DE NEGÓCIO
 
+
 Módulo 0: Administração e Funcionários
 
   ⦁	Quem participa: Administrador, atendentes e sistema interno. 
-  ⦁	Início: O administrador acessa o painel restrito para criar usuários, definir perfis e gerenciar privilégios de acesso para cada funcionário. 
+  
+  ⦁	Início: O administrador acessa o painel restrito para criar usuários, definir perfis e gerenciar privilégios de acesso para cada funcionário.
+  
   ⦁	O que acontece: O sistema valida credenciais, permite ajuste de perfis e grava alterações. 
+  
   ⦁	Informação gerada: Logs de auditoria, registros de permissão e histórico de acessos. 
+  
   ⦁	Resultado: Equipe habilitada e permissões de acesso configuradas. 
+  
   ⦁	Exceções: Permissões incorretas (acesso negado), falha de autenticação (bloqueio temporário). 
+
+
 
 Módulo 01: Cadastro de Cliente
 
   ⦁	Quem participa: Cliente, atendente e sistema. 
+  
   ⦁	Início: O cliente solicita orçamento e preenche os dados cadastrais. 
+  
   ⦁	O que acontece: O sistema valida CPF/CNPJ e e-mail (que devem ser únicos), cadastra o registro com status Ativo e envia confirmação de cadastro. 
+  
   ⦁	Informação gerada: Registro do cliente, termo de consentimento LGPD e endereços de entrega. 
+  
   ⦁	Resultado: Cliente apto a realizar cotações e contratos. 
+  
   ⦁	Exceções: Dados inválidos (solicitação de correção), e-mail não confirmado (cadastro pendente). 
+
+
 
 Módulo 02: Login do Cliente
 
   ⦁	Quem participa: Cliente e sistema de autenticação. 
+  
   ⦁	Início: O cliente insere suas credenciais na tela de login. 
-  ⦁	O que acontece: O sistema valida as credenciais, aplica verificação de dois fatores (2FA) quando necessário e inicia a sessão. 
+  
+  ⦁	O que acontece: O sistema valida as credenciais, aplica verificação de dois fatores (2FA) quando necessário e inicia a sessão.
+  
   ⦁	Informação gerada: Registro de sessão ativa, log de acesso (IP, data e hora). 
+  
   ⦁	Resultado: Cliente autenticado com acesso ao painel de reservas. 
+  
   ⦁	Exceções: senha incorreta após 3 tentativas gera bloqueio temporário; conta com débito em aberto tem o acesso bloqueado. 
+
+
 
 Módulo 03: Catálogo, Cotação e Locação
 
   ⦁	Quem participa: Cliente, sistema de catálogo e equipe comercial. 
+  
   ⦁	Início: O cliente navega pelo catálogo já visualizando a quantidade disponível de cada item. Itens sem disponibilidade aparecem sinalizados como indisponíveis e não podem ser selecionados. 
+  
   ⦁	O que acontece: O sistema verifica disponibilidade, gera a cotação (validade de 48h) e, após o pagamento do sinal de 50%, converte em locação e reserva o estoque. 
+  
   ⦁	Informação gerada: Cotação, contrato de locação, baixa lógica no estoque e comprovante financeiro. 
+  
   ⦁	Resultado: Cotação gerada e locação confirmada. 
+  
   ⦁	Exceções: Produto indisponível para a data, expiração do prazo da cotação sem pagamento de sinal. 
+
+
 
 Módulo 04: Produtos e Estoque
 
   ⦁	Quem participa: Equipe de estoque/logística e sistema. 
+  
   ⦁	Início: Entrada, saída, devolução ou manutenção de produtos. 
+  
   ⦁	O que acontece: O sistema atualiza saldos, emite alertas de estoque mínimo e gerencia status dos itens (Disponível, Locado, pré-locado, em Manutenção, Inutilizado/Perda). 
+  
   ⦁	Informação gerada: Registro de movimentação, laudo de avaria e status do inventário. 
+  
   ⦁	Resultado: Estoque atualizado e controlado. 
+  
   ⦁	Exceções: Indisponibilidade de item, divergência de inventário. 
+
+
 
 Módulo 05: Contrato e Financeiro
 
-  ⦁	Quem participa: Cliente, sistema financeiro e equipe administrativa. 
-  ⦁	Início: Confirmação da locação pelo cliente. 
-  ⦁	O que acontece: O sistema gera o contrato de locação para assinatura digital, processa o sinal de 50% (Pix, Boleto, Cartão) com emissão de recibo, controla o saldo restante e, após quitação total, emite Nota Fiscal única pelo valor integral. 
-  ⦁	Informação gerada: Contrato assinado, recibo de pagamento e Nota Fiscal. 
-  ⦁	Resultado: Locação formalizada e quitação financeira registrada. 
-  ⦁	Exceções: Sinal não pago em 48h, pagamento não identificado, contrato não assinado. 
+  ⦁	Quem participa: Cliente, sistema financeiro e equipe administrativa.
+
+  ⦁	Início: Confirmação da locação pelo cliente.
+  
+  ⦁	O que acontece: O sistema gera o contrato de locação para assinatura digital, processa o sinal de 50% (Pix, Boleto, Cartão) com emissão de recibo, controla o saldo restante e, após quitação total, emite Nota Fiscal única pelo valor integral.
+  
+  ⦁	Informação gerada: Contrato assinado, recibo de pagamento e Nota Fiscal.
+  
+  ⦁	Resultado: Locação formalizada e quitação financeira registrada.
+  
+  ⦁	Exceções: Sinal não pago em 48h, pagamento não identificado, contrato não assinado.
+
+
 
 Módulo 06: Devolução, Avarias e Multas
 
-  ⦁	Quem participa: Cliente, equipe de logística e setor financeiro. 
-  ⦁	Início: Retorno dos produtos locados. 
-  ⦁	O que acontece: A equipe realiza vistoria com laudo fotográfico. Se houver atraso ou avaria, o sistema aplica multa automaticamente conforme contrato e atualiza o status do item para Em Manutenção ou Inutilizado/Perda. 
-  ⦁	Informação gerada: Termo de devolução, laudo de avaria com evidências e cobrança de multa. 
-  ⦁	Resultado: Equipamento retornado ao estoque como Disponível ou bloqueado para manutenção, pendências financeiras tratadas. 
-  ⦁	Exceções: Atraso na devolução (> 24h), perda total ou produto avariado. 
+ ⦁	Quem participa: Cliente, equipe de logística e setor financeiro.
+
+  ⦁	Início: Retorno dos produtos locados.
+  
+  ⦁	O que acontece: A equipe realiza vistoria com laudo fotográfico. Se houver atraso ou avaria, o sistema aplica multa automaticamente conforme contrato e atualiza o status do item para Em Manutenção ou Inutilizado/Perda.
+  
+  ⦁	Informação gerada: Termo de devolução, laudo de avaria com evidências e cobrança de multa.
+  
+  ⦁	Resultado: Equipamento retornado ao estoque como Disponível ou bloqueado para manutenção, pendências financeiras tratadas.
+  
+  ⦁	Exceções: Atraso na devolução (> 24h), perda total ou produto avariado.
+
+
 
 Módulo 07: Relatórios e Dashboard
 
-  ⦁	Quem participa: Administrador, gestores e sistema de BI. 
-  ⦁	Início: Solicitação de relatórios ou acesso ao dashboard gerencial. 
-  ⦁	O que acontece: O sistema compila dados de locações, financeiro e estoque, exibindo gráficos e indicadores em tempo real. 
-  ⦁	Informação gerada: Relatórios de faturamento, giro de estoque (Curva ABC), inadimplência e taxa de avarias. 
-  ⦁	Resultado: Tomada de decisão fundamentada em dados em tempo real. 
+  ⦁	Quem participa: Administrador, gestores e sistema de BI.
+
+  ⦁	Início: Solicitação de relatórios ou acesso ao dashboard gerencial.
+  
+  ⦁	O que acontece: O sistema compila dados de locações, financeiro e estoque, exibindo gráficos e indicadores em tempo real.
+  
+  ⦁	Informação gerada: Relatórios de faturamento, giro de estoque (Curva ABC), inadimplência e taxa de avarias.
+  
+  ⦁	Resultado: Tomada de decisão fundamentada em dados em tempo real.
+  
   ⦁	Exceções: Dados incompletos, falha de integração.
+
+  
 
 ## ETAPA 04 - IDENTIFICAÇÃO DOS PROBLEMAS E NECESSIDADES
 
@@ -195,6 +259,7 @@ Módulo 07: Relatórios e Dashboard
   ⦁	Problema 8: Falta de controle de privilégios de acesso ao sistema. 
     ⦁	Consequência: Riscos de segurança e alterações indevidas nos registros. 
     
+    
 Necessidade Principal Identificada:
   A empresa necessita de um sistema único e integrado, baseado em banco de dados relacional, que centralize as informações de clientes, produtos, estoque, cotações, contratos, pagamentos e avarias, permitindo a comunicação em tempo real entre todos os setores.
 
@@ -202,189 +267,356 @@ Necessidade Principal Identificada:
 
 ## ETAPA 05 - LEVANTAMENTO DE REQUISITOS FUNCIONAIS
 
+
 Módulo 0: Administração e Funcionários
+
   ⦁	RF01 - Validação de dados: Exigir que CPF e e-mail corporativo sejam únicos no sistema. 
+  
   ⦁	RF02 - Recuperação de senha: Permitir redefinição de senha via e-mail ou SMS com autenticação segura. 
+  
   ⦁	RF03 - Expiração de sessão: Realizar logout automático por inatividade do usuário. 
+  
   ⦁	RF04 - Cadastro de funcionários: Permitir que o Administrador cadastre funcionários com nome, CPF, e-mail corporativo, telefone, perfil e senha provisória de 8 dígitos. 
+  
   ⦁	RF05 - Definição de perfil: Configurar perfis de acesso: Admin Master, Comercial/Vendas e Estoque/Logística. 
+  
   ⦁	RF06 - Controle de status do funcionário: Permitir alterar status para Ativo, Inativo ou Bloqueado. 
+  
   ⦁	RF07 - Login do funcionário: Autenticar funcionários e liberar funcionalidades conforme o perfil. 
+  
   ⦁	RF08 - Alteração de senha obrigatória: Exigir troca da senha provisória no primeiro login. 
-  ⦁	RF09 - Auditoria (Logs): Registrar todas as ações dos colaboradores com identificação de nome, data, hora e ação executada. 
+  
+  ⦁	RF09 - Auditoria (Logs): Registrar todas as ações dos colaboradores com identificação de nome, data, hora e ação executada.
+  
   ⦁	RF10 - Bloqueio automático: Bloquear o acesso do funcionário após 3 tentativas incorretas de login. 
 
+
 Módulo 01: Cadastro de Clientes
-  ⦁	RF01 - Cadastro completo: Permitir inclusão de nome/razão social, CPF/CNPJ, telefone, e-mail e endereço. 
+
+  ⦁	RF01 - Cadastro completo: Permitir inclusão de nome/razão social, CPF/CNPJ, telefone, e-mail e endereço.
+  
   ⦁	RF02 - Status padrão: Cadastrar automaticamente o cliente com status Ativo. 
+  
   ⦁	RF03 - Validação de documentos: Validar formato e consistência matemática de CPF e CNPJ. 
+  
   ⦁	RF04 - Tipo de pessoa: Classificar o cliente como Pessoa Física (PF) ou Pessoa Jurídica (PJ). 
+  
   ⦁	RF05 - Validação de contato: Garantir unicidade de e-mail e formato válido para telefones. 
+  
   ⦁	RF06 - Busca de endereço por CEP: Preencher logradouro, bairro, cidade e estado automaticamente ao informar o CEP. 
+  
   ⦁	RF07 - Múltiplos endereços: Permitir o cadastro de mais de um endereço por cliente para entrega. 
+  
   ⦁	RF08 - Restrição de maioridade: Bloquear o cadastro de menores de 18 anos. 
+  
   ⦁	RF09 - Termo LGPD: Exigir aceite do termo de consentimento com gravação de data e hora. 
+  
   ⦁	RF10 - Edição de cadastro: Permitir alteração exclusiva de telefone, e-mail e endereço. 
 
+
 Módulo 02: Login do Cliente
+
   ⦁	RF01 - Criação de credenciais: Permitir cadastro de senha forte com no mínimo 8 caracteres. 
+  
   ⦁	RF02 - Autenticação 2FA: Exigir segundo fator de autenticação para acessos (e-mail ou aplicativo). 
+  
   ⦁	RF03 - Autenticação de cliente: Permitir login utilizando e-mail ou CPF/CNPJ acompanhado da senha cadastrada. 
+  
   ⦁	RF04 - Bloqueio por falhas: Suspender o acesso após 3 tentativas incorretas consecutivas. 
-  ⦁	RF05 - Redefinição de senha: Enviar link temporário com token seguro para redefinição. 
+  
+  ⦁	RF05 - Redefinição de senha: Enviar link temporário com token seguro para redefinição.
+  
   ⦁	RF06 - Registro de conexões: Gravar histórico de logins com IP, data e hora. 
+  
   ⦁	RF07 - Encerramento de sessão: Encerrar sessão por inatividade após 15 minutos. 
 
+
 Módulo 03: Catálogo, Cotação e Locação
-  ⦁	RF01 - Exibição do catálogo: Exibir produtos com foto, nome, código, descrição e valor da diária, filtráveis por categoria. 
+
+  ⦁	RF01 - Exibição do catálogo: Exibir produtos com foto, nome, código, descrição e valor da diária, filtráveis por categoria.
+  
   ⦁	RF02 - Carrinho de compras: Permitir adição, alteração de quantidade e remoção de itens. 
-  ⦁	RF03 - Validação de seleção: Bloquear envio de cotação com o carrinho vazio. 
-  ⦁	RF04 - Registro do período: Exigir data da festa e prazos de retirada e devolução. 
+  
+  ⦁	RF03 - Validação de seleção: Bloquear envio de cotação com o carrinho vazio.
+  
+  ⦁	RF04 - Registro do período: Exigir data da festa e prazos de retirada e devolução.
+  
   ⦁	RF05 - Consulta de disponibilidade: Verificar estoque disponível para a data solicitada. 
-  ⦁	RF06 - Bloqueio por indisponibilidade: Alertar o cliente caso o produto não tenha saldo para a data escolhida. 
-  ⦁	RF07 - Restrição de cotação: Permitir envio de orçamento apenas para clientes autenticados com status Ativo. 
-  ⦁	RF08 - Emissão de cotação: Gerar cotação detalhada com código, itens, prazos, diárias e valor total. 
+  
+  ⦁	RF06 - Bloqueio por indisponibilidade: Alertar o cliente caso o produto não tenha saldo para a data escolhida.
+  
+  ⦁	RF07 - Restrição de cotação: Permitir envio de orçamento apenas para clientes autenticados com status Ativo.
+  
+  ⦁	RF08 - Emissão de cotação: Gerar cotação detalhada com código, itens, prazos, diárias e valor total.
+  
   ⦁	RF09 - Validade do orçamento: Expirar a cotação automaticamente após 48 horas. 
-  ⦁	RF10 - Notificação de vencimento: Avisar o cliente 24 horas antes da expiração da cotação. 
-  ⦁	RF11 - Análise comercial: Permitir que a equipe Comercial analise, aprove ou recuse orçamentos. 
-  ⦁	RF12 - Conversão em locação: Converter cotação em contrato após confirmação e pagamento do sinal de 50%. 
+  
+  ⦁	RF10 - Notificação de vencimento: Avisar o cliente 24 horas antes da expiração da cotação.
+  
+  ⦁	RF11 - Análise comercial: Permitir que a equipe Comercial analise, aprove ou recuse orçamentos.
+  
+  
+  ⦁	RF12 - Conversão em locação: Converter cotação em contrato após confirmação e pagamento do sinal de 50%.
+  
   ⦁	RF13 - Baixa lógica de estoque: Reservar os itens no estoque para as datas confirmadas. 
-  ⦁	RF14 - Liberação de reserva: Cancelar a reserva lógica se o sinal não for quitado dentro do prazo. 
-  ⦁	RF15 - Status do cliente: Alterar status para Locado na confirmação e Bloqueado em caso de débitos. 
-  ⦁	RF16 - Consulta pelo cliente: Disponibilizar painel para consulta de cotações e contratos vigentes. 
-  ⦁	RF17 - Regras de cancelamento: Aplicar reembolso proporcional conforme antecedência (100% acima de 48h; 50% entre 24h e 47h; 0% abaixo de 24h). 
-  ⦁	RF18 - Registro do cancelamento: Exigir confirmação do cliente para cancelar contrato. 
-  ⦁	RF19 - Comunicação automática: Enviar notificações e-mail/SMS em cada etapa da locação. 
+  
+  ⦁	RF14 - Liberação de reserva: Cancelar a reserva lógica se o sinal não for quitado dentro do prazo.
+  
+  ⦁	RF15 - Status do cliente: Alterar status para Locado na confirmação e Bloqueado em caso de débitos.
+  
+  ⦁	RF16 - Consulta pelo cliente: Disponibilizar painel para consulta de cotações e contratos vigentes.
+  
+  ⦁	RF17 - Regras de cancelamento: Aplicar reembolso proporcional conforme antecedência (100% acima de 48h; 50% entre 24h e 47h; 0% abaixo de 24h).
+  
+  ⦁	RF18 - Registro do cancelamento: Exigir confirmação do cliente para cancelar contrato.
+  
+  ⦁	RF19 - Comunicação automática: Enviar notificações e-mail/SMS em cada etapa da locação.
+  
   ⦁	RF20 - Auditoria de contrato: Gravar histórico de alterações de cada contrato de locação. 
 
+
 Módulo 04: Produtos e Estoque
-  ⦁	RF01 - Cadastro de produto: Permitir registro com código, nome, quantidade, valor da diária e status. 
-  ⦁	RF02 - Edição de produto: Permitir atualização dos dados cadastrais dos produtos. 
-  ⦁	RF03 - Consulta de saldo: Exibir quantidade total, reservada e disponível de cada item. 
-  ⦁	RF04 - Gestão de estoque: Registrar entradas, saídas, devoluções e manutenções. 
-  ⦁	RF05 - Checagem por data: Consultar disponibilidade considerando a agenda de eventos. 
-  ⦁	RF06 - Reserva de itens: Bloquear saldo de estoque conforme as datas reservadas. 
-  ⦁	RF07 - Baixa automática: Atualizar quantidade disponível na confirmação do contrato. 
-  ⦁	RF08 - Retorno de estoque: Incrementar quantidade disponível na devolução física dos itens. 
-  ⦁	RF09 - Controle de status: Alternar status do item entre Disponível, Locado, Em Manutenção e Inutilizado/Perda. 
-  ⦁	RF10 - Registro de avarias: Permitir lançamento de danos identificados na vistoria. 
-  ⦁	RF11 - Trava de manutenção: Bloquear novas reservas de itens avariados até sua liberação. 
+
+  ⦁	RF01 - Cadastro de produto: Permitir registro com código, nome, quantidade, valor da diária e status.
+  
+  ⦁	RF02 - Edição de produto: Permitir atualização dos dados cadastrais dos produtos.
+  
+  ⦁	RF03 - Consulta de saldo: Exibir quantidade total, reservada e disponível de cada item.
+  
+  ⦁	RF04 - Gestão de estoque: Registrar entradas, saídas, devoluções e manutenções.
+  
+  ⦁	RF05 - Checagem por data: Consultar disponibilidade considerando a agenda de eventos.
+  
+  ⦁	RF06 - Reserva de itens: Bloquear saldo de estoque conforme as datas reservadas.
+  
+  ⦁	RF07 - Baixa automática: Atualizar quantidade disponível na confirmação do contrato.
+  
+  ⦁	RF08 - Retorno de estoque: Incrementar quantidade disponível na devolução física dos itens.
+  
+  ⦁	RF09 - Controle de status: Alternar status do item entre Disponível, Locado, Em Manutenção e Inutilizado/Perda.
+  
+  ⦁	RF10 - Registro de avarias: Permitir lançamento de danos identificados na vistoria.
+  
+  ⦁	RF11 - Trava de manutenção: Bloquear novas reservas de itens avariados até sua liberação.
+  
   ⦁	RF12 - Mídia e descrição: Permitir inclusão de galeria de fotos e ficha descritiva. 
+  
   ⦁	RF13 - Alerta de estoque mínimo: Notificar quando o saldo de estoque atingir o limite mínimo configurado. 
+  
   ⦁	RF14 - Rastreabilidade: Registrar histórico de movimentações e alterações do estoque. 
 
+
 Módulo 05: Contrato e Financeiro
+
   ⦁	RF01 - Emissão automática de contrato: Gerar contrato PDF/digital automaticamente com aceite do sinal. 
+  
   ⦁	RF02 - Download de documentos: Permitir download do contrato em PDF, DOC, TXT e PNG. 
+  
   ⦁	RF03 - Registro de pagamentos: Armazenar pagamentos efetuados, formas e saldos devedores. 
+  
   ⦁	RF04 - Multiplataforma de pagamento: Aceitar Boleto, Pix, Cartão de Crédito e Débito. 
+  
   ⦁	RF05 - Emissão de Nota Fiscal: Gerar Nota Fiscal automaticamente após confirmação do pagamento. 
+  
   ⦁	RF06 - Consulta de Notas Fiscais: Permitir ao cliente baixar todas as suas Notas Fiscais. 
+  
   ⦁	RF07 - Controle de pendências: Apresentar saldos abertos e contas a receber para o Financeiro. 
+  
   ⦁	RF08 - Histórico financeiro: Manter histórico de contratos, notas e pagamentos por cliente. 
+  
   ⦁	RF09 - Sincronização intersetorial: Atualizar informações financeiras em tempo real para Comercial e Logística.
 
+
 Módulo 06: Devolução, Avarias e Multas
-  ⦁	RF01 - Lançamento de multas: Gerar cobranças automáticas vinculadas à locação por atraso ou danos. 
-  ⦁	RF02 - Multa por atraso: Aplicar taxa para atrasos superiores a 24 horas (1 diária + 10% de multa ao dia). 
-  ⦁	RF03 - Perda total por inadimplência: Cobrar valor de reposição integral do produto após 7 dias de atraso e alterar status do cliente para Bloqueado. 
-  ⦁	RF04 - Classificação de avarias: Permitir classificação dos danos em: Leve (20% da diária), Média (50% do valor de reposição) ou Grave (100% do valor de reposição). 
-  ⦁	RF05 - Laudo com evidências: Exigir descrição, assinatura do vistoriador e mínimo de 2 fotos para liberar cobrança. 
-  ⦁	RF06 - Destinação do produto: Atualizar status do produto avariado com base no laudo. 
-  ⦁	RF07 - Bloqueio e liberação do cliente: Bloquear cliente inadimplente e desbloquear automaticamente após a quitação. 
+
+  ⦁	RF01 - Lançamento de multas: Gerar cobranças automáticas vinculadas à locação por atraso ou danos.
+  
+  ⦁	RF02 - Multa por atraso: Aplicar taxa para atrasos superiores a 24 horas (1 diária + 10% de multa ao dia).
+  
+  ⦁	RF03 - Perda total por inadimplência: Cobrar valor de reposição integral do produto após 7 dias de atraso e alterar status do cliente para Bloqueado.
+  
+  ⦁	RF04 - Classificação de avarias: Permitir classificação dos danos em: Leve (20% da diária), Média (50% do valor de reposição) ou Grave (100% do valor de reposição).
+  
+  ⦁	RF05 - Laudo com evidências: Exigir descrição, assinatura do vistoriador e mínimo de 2 fotos para liberar cobrança.
+  
+  ⦁	RF06 - Destinação do produto: Atualizar status do produto avariado com base no laudo.
+  
+  ⦁	RF07 - Bloqueio e liberação do cliente: Bloquear cliente inadimplente e desbloquear automaticamente após a quitação.
+  
   ⦁	RF08 - Baixa definitiva: Dar baixa definitiva no estoque em perdas totais ou avarias graves. 
 
+
 Módulo 07: Relatórios e Dashboard
-  ⦁	RF01 - Visão por perfil: Exibir painéis visuais com indicadores personalizados por perfil. 
-  ⦁	RF02 - Filtro por período: Permitir filtragem de relatórios por intervalo de datas. 
-  ⦁	RF03 - Relatório financeiro: Gerar demonstrativos de faturamento, recebimentos de sinais e multas. 
-  ⦁	RF04 - Relatório de estoque: Emitir relatórios com posição atual do estoque (disponíveis, alocados e em manutenção). 
-  ⦁	RF05 - Relatório de avarias: Listar laudos, classificações, fotos e valores cobrados. 
-  ⦁	RF06 - Exportação de dados: Permitir exportação de relatórios em PDF, XLSX e CSV. 
-  ⦁	RF07 - Desempenho de cotações: Apresentar taxa de conversão e expiração de orçamentos. 
-  ⦁	RF08 - Curva ABC de estoque: Classificar produtos por frequência de locação e receita gerada. 
-  ⦁	RF09 - Relatório de inadimplência: Listar clientes com débitos pendentes e multas em aberto. 
-  ⦁	RF10 - Romaneio diário: Gerar lista de separação e conferência para logística. 
-  ⦁	RF11 - Perfil do cliente: Exibir histórico de locações anteriores para atendimento personalizado. 
-  ⦁	RF12 - Atualização contínua: Atualizar métricas do dashboard em tempo real. 
-  ⦁	RF13 - Ticket médio: Calcular e exibir o valor médio por locação (faturamento total das locações ÷ número de locações realizadas), com filtro por período. 
+
+  ⦁	RF01 - Visão por perfil: Exibir painéis visuais com indicadores personalizados por perfil.
+
+  ⦁	RF02 - Filtro por período: Permitir filtragem de relatórios por intervalo de datas.
+  
+  ⦁	RF03 - Relatório financeiro: Gerar demonstrativos de faturamento, recebimentos de sinais e multas.
+  
+  ⦁	RF04 - Relatório de estoque: Emitir relatórios com posição atual do estoque (disponíveis, alocados e em manutenção).
+  
+  ⦁	RF05 - Relatório de avarias: Listar laudos, classificações, fotos e valores cobrados.
+  
+  ⦁	RF06 - Exportação de dados: Permitir exportação de relatórios em PDF, XLSX e CSV.
+  
+  ⦁	RF07 - Desempenho de cotações: Apresentar taxa de conversão e expiração de orçamentos.
+  
+  ⦁	RF08 - Curva ABC de estoque: Classificar produtos por frequência de locação e receita gerada.
+  
+  ⦁	RF09 - Relatório de inadimplência: Listar clientes com débitos pendentes e multas em aberto.
+  
+  ⦁	RF10 - Romaneio diário: Gerar lista de separação e conferência para logística.
+  
+  ⦁	RF11 - Perfil do cliente: Exibir histórico de locações anteriores para atendimento personalizado.
+  
+  ⦁	RF12 - Atualização contínua: Atualizar métricas do dashboard em tempo real.
+  
+  ⦁	RF13 - Ticket médio: Calcular e exibir o valor médio por locação (faturamento total das locações ÷ número de locações realizadas), com filtro por período.
+
 
 
 ## ETAPA 06 - REQUISITOS NÃO FUNCIONAIS DO SISTEMA GERAL
 
-  ⦁	RNF01 - Usabilidade: Interface simples, responsiva e intuitiva para clientes e funcionários em dispositivos desktop e mobile. 
-  ⦁	RNF02 - Segurança: Criptografia de senhas (hash seguro) e autenticação de dois fatores (2FA). 
-  ⦁	RNF03 - Desempenho: Consultas de estoque e geração de cotações em tempo de resposta inferior a 3 segundos. 
-  ⦁	RNF04 - Compatibilidade: Compatibilidade com os navegadores Google Chrome, Microsoft Edge e Mozilla Firefox. 
-  ⦁	RNF05 - Disponibilidade: Disponibilidade de 99,0% do tempo, com rotinas automáticas de backup diário do banco de dados. 
-  ⦁	RNF06 - Padrão de Dados: Utilização de Banco de Dados Relacional MySQL. 
+ ⦁	RNF01 - Usabilidade: Interface simples, responsiva e intuitiva para clientes e funcionários em dispositivos desktop e mobile.
+
+  ⦁	RNF02 - Segurança: Criptografia de senhas (hash seguro) e autenticação de dois fatores (2FA).
+  
+  ⦁	RNF03 - Desempenho: Consultas de estoque e geração de cotações em tempo de resposta inferior a 3 segundos.
+  
+  ⦁	RNF04 - Compatibilidade: Compatibilidade com os navegadores Google Chrome, Microsoft Edge e Mozilla Firefox.
+  
+  ⦁	RNF05 - Disponibilidade: Disponibilidade de 99,0% do tempo, com rotinas automáticas de backup diário do banco de dados.
+  
+  ⦁	RNF06 - Padrão de Dados: Utilização de Banco de Dados Relacional MySQL.
+  
   ⦁	RNF07 - Linguagem e Arquitetura: Desenvolvimento em PHP + MySQL.
+
+
 
 ## ETAPA 07 - IDENTIFICAÇÃO DAS REGRAS DE NEGÓCIO DO SISTEMA
 
+
 Módulo 0: Administração e Funcionários
-  ⦁	RN01 - Privilégio do Admin: Apenas usuários com perfil Admin Master podem cadastrar funcionários. 
-  ⦁	RN02 - Restrição a usuários operacionais: Usuários comuns não possuem permissão para criar novos usuários. 
-  ⦁	RN03 - Campos obrigatórios: Nome completo, CPF (único), e-mail corporativo (único), telefone, cargo e perfil. 
+
+  ⦁	RN01 - Privilégio do Admin: Apenas usuários com perfil Admin Master podem cadastrar funcionários.
+
+  ⦁	RN02 - Restrição a usuários operacionais: Usuários comuns não possuem permissão para criar novos usuários.
+  
+  ⦁	RN03 - Campos obrigatórios: Nome completo, CPF (único), e-mail corporativo (único), telefone, cargo e perfil.
+  
   ⦁	RN04 - Escopo de permissão:
-    ⦁	ADMIN MASTER: Acesso total (funcionários, produtos, relatórios e financeiro). 
-    ⦁	COMERCIAL / VENDAS: Elabora cotações, confirma locações e gera contratos; não altera estoque nem exclui produtos. 
-    ⦁	ESTOQUE / LOGÍSTICA: Cadastra e movimenta produtos, emite laudos de avaria; sem acesso ao financeiro detalhado. 
-  ⦁	RN05 - Inativação e histórico: Funcionário inativado perde acesso imediatamente, preservando-se seu histórico para auditoria. 
-  ⦁	RN06 - Primeiro acesso: Obrigatoriedade de alteração da senha provisória no primeiro login. 
-  ⦁	RN07 - Logs de auditoria: Todas as ações devem registrar usuário, data e hora. 
-  ⦁	RN08 - Segregação de telas: Login de funcionários realizado em URL e ambiente totalmente separados do login de clientes. 
+  
+  -	ADMIN MASTER: Acesso total (funcionários, produtos, relatórios e financeiro).
+  
+  -	COMERCIAL / VENDAS: Elabora cotações, confirma locações e gera contratos; não altera estoque nem exclui produtos.
+  
+  -	ESTOQUE / LOGÍSTICA: Cadastra e movimenta produtos, emite laudos de avaria; sem acesso ao financeiro detalhado.
+  
+  ⦁	RN05 - Inativação e histórico: Funcionário inativado perde acesso imediatamente, preservando-se seu histórico para auditoria.
+  
+  ⦁	RN06 - Primeiro acesso: Obrigatoriedade de alteração da senha provisória no primeiro login.
+  
+  ⦁	RN07 - Logs de auditoria: Todas as ações devem registrar usuário, data e hora.
+  
+  ⦁	RN08 - Segregação de telas: Login de funcionários realizado em URL e ambiente totalmente separados do login de clientes.
+
 
 Módulo 01: Cadastro de Cliente
-  ⦁	RN01 - Unicidade cadastral: É vedada a duplicidade de CPF/CNPJ ou e-mail no sistema. 
-  ⦁	RN02 - Status inicial: O status automático pós-cadastro é Ativo. 
-  ⦁	RN03 - Validação de documento: Validação matemática estrita de CPF (11 dígitos) e CNPJ (14 dígitos). 
-  ⦁	RN04 - Maioridade legal: Cadastro restrito a indivíduos com idade igual ou superior a 18 anos. 
-  ⦁	RN05 - Registro LGPD: Gravação obrigatória do aceite dos termos da LGPD com data e hora. 
-  ⦁	RN06 - Edição de dados: O cliente pode alterar apenas telefone, e-mail e endereços. 
+  ⦁	RN01 - Unicidade cadastral: É vedada a duplicidade de CPF/CNPJ ou e-mail no sistema.
+
+  ⦁	RN02 - Status inicial: O status automático pós-cadastro é Ativo.
+  
+  ⦁	RN03 - Validação de documento: Validação matemática estrita de CPF (11 dígitos) e CNPJ (14 dígitos).
+  
+  ⦁	RN04 - Maioridade legal: Cadastro restrito a indivíduos com idade igual ou superior a 18 anos.
+  
+  ⦁	RN05 - Registro LGPD: Gravação obrigatória do aceite dos termos da LGPD com data e hora.
+  
+  ⦁	RN06 - Edição de dados: O cliente pode alterar apenas telefone, e-mail e endereços.
+
 
 Módulo 02: Login do Cliente
-  ⦁	RN01 - Pré-requisito: Exige cadastro prévio ativo no banco de dados. 
-  ⦁	RN02 - Bloqueio temporário: A conta é bloqueada temporariamente após 3 tentativas seguidas de senha incorreta. 
-  ⦁	RN03 - Expiração de sessão: Sessão encerrada automaticamente após 15 minutos sem interação. 
+ ⦁	RN01 - Pré-requisito: Exige cadastro prévio ativo no banco de dados.
+
+  ⦁	RN02 - Bloqueio temporário: A conta é bloqueada temporariamente após 3 tentativas seguidas de senha incorreta.
+  
+  ⦁	RN03 - Expiração de sessão: Sessão encerrada automaticamente após 15 minutos sem interação.
+
 
 Módulo 03: Catálogo, Cotação e Locação
-  ⦁	RN01 - Seleção mínima: A cotação exige ao menos 1 produto no carrinho. 
-  ⦁	RN02 - Validade de orçamento: Cotação válida por 48 horas; expira automaticamente se o sinal não for quitado. 
-  ⦁	RN03 - Garantia de reserva (Sinal): A reserva de estoque só é efetivada mediante pagamento comprovado do sinal de 50%. 
+ ⦁	RN01 - Seleção mínima: A cotação exige ao menos 1 produto no carrinho.
+
+  ⦁	RN02 - Validade de orçamento: Cotação válida por 48 horas; expira automaticamente se o sinal não for quitado.
+
+  ⦁	RN03 - Garantia de reserva (Sinal): A reserva de estoque só é efetivada mediante pagamento comprovado do sinal de 50%.
+
   ⦁	RN04 - Regras de reembolso por cancelamento:
-  ⦁	Cancelamento com antecedência ≥ 48h: reembolso de 100% do sinal. 
-  ⦁	Cancelamento entre 24h e 47h: reembolso de 50% do sinal. 
-  ⦁	Cancelamento < 24h: sem direito a reembolso do sinal. 
+  
+  -	Cancelamento com antecedência ≥ 48h: reembolso de 100% do sinal.
+  -	
+  -	Cancelamento entre 24h e 47h: reembolso de 50% do sinal.
+  -	
+  -	Cancelamento < 24h: sem direito a reembolso do sinal.
+
 
 Módulo 04: Produtos e Estoque
+
   ⦁	RN01 - Atributos do produto: Todo produto deve conter código (SKU), nome, valor da diária e quantidade em estoque. 
+  
   ⦁	RN02 - Status do produto: Os estados possíveis são Disponível, Locado, Em Manutenção ou Inutilizado/Perda. 
+  
   ⦁	RN03 - Trava por manutenção: Itens com avaria média vão para Em Manutenção e são bloqueados para locação. 
 
+
 Módulo 05: Contrato e Financeiro
+
   ⦁	RN01 - Vínculo contratual: Contrato gerado automaticamente a partir da cotação aprovada com sinal quitado. 
-  ⦁	RN02 - Quitação na retirada: O saldo restante de 50% deve ser quitado até a data da retirada dos produtos. 
+  
+ ⦁	RN02 - Quitação na retirada: O saldo restante de 50% deve ser quitado até a data da retirada dos produtos. 
+
+
+ 
   Módulo 06: Devolução, Avarias e Multas
+  
   ⦁	RN01 - Tolerância no atraso: Tolerância de até 1 hora no horário de devolução antes da cobrança de multa. 
-  ⦁	RN02 - Cálculo de multa por atraso: Atrasos superiores a 24 horas implicam a cobrança de 1 diária integral + multa de 10%/dia. 
+  
+  ⦁	RN02 - Cálculo de multa por atraso: Atrasos superiores a 24 horas implicam a cobrança de 1 diária integral + multa de 10%/dia.
+  
   ⦁	RN03 - Caracterização de perda: Atrasos superiores a 7 dias convertem-se em cobrança pelo valor integral de reposição e bloqueio do cliente. 
+  
   ⦁	RN04 - Laudo com evidências: Cobrança de avarias exige laudo com descrição, assinatura do vistoriador e mínimo de 2 fotos. 
+
+
+  
   Módulo 07: Relatórios e Dashboard
+  
   ⦁	RN01 - Atualização contínua: Os indicadores do dashboard atualizam-se em tempo real a cada transação. 
+  
   ⦁	RN02 - Acesso restrito: Relatórios sensíveis (financeiro, inadimplência) só são visíveis para perfis autorizados. 
+  
   ⦁	RN03 - Base de cálculo do ticket médio: O cálculo utiliza o atributo valor_total da LOCAÇÃO, considerando somente as locações que efetivamente contribuíram para o faturamento no período analisado.
 
 
+
 ## ETAPA 08 - IDENTIFICAÇÃO DE RESTRIÇÕES E POLÍTICAS ORGANIZACIONAIS
+
 Restrições
-  ⦁	Orçamentárias: Projeto com orçamento limitado, exigindo uso de tecnologias de código aberto (PHP/MySQL). 
-  ⦁	Prazo: Prazo de conclusão alinhado ao cronograma acadêmico. 
-  ⦁	Recursos Humanos: Equipe técnica reduzida com atribuição clara de funções. 
-  ⦁	Legais e Regulatórias: Conformidade obrigatória com a LGPD (Lei nº 13.709/2018). 
+
+ ⦁	Orçamentárias: Projeto com orçamento limitado, exigindo uso de tecnologias de código aberto (PHP/MySQL).
+
+  ⦁	Prazo: Prazo de conclusão alinhado ao cronograma acadêmico.
+  
+  ⦁	Recursos Humanos: Equipe técnica reduzida com atribuição clara de funções.
+  
+  ⦁	Legais e Regulatórias: Conformidade obrigatória com a LGPD (Lei nº 13.709/2018).
+  
   Políticas Organizacionais
-  ⦁	Política de Segurança da Informação: Controle estrito de privilégios, criptografia e rotinas diárias de backup. 
-  ⦁	Política de Qualidade: Vistorias de devolução padronizadas com checklists e registro fotográfico. 
+  
+  ⦁	Política de Segurança da Informação: Controle estrito de privilégios, criptografia e rotinas diárias de backup.
+  
+  ⦁	Política de Qualidade: Vistorias de devolução padronizadas com checklists e registro fotográfico.
+  
   ⦁	Política de Ética e Compliance: Regras transparentes de cancelamento, prazos e reembolsos.
 
 
@@ -400,20 +632,35 @@ Restrições
 
 ## ETAPA 10 - IDENTIFICAÇÃO DAS ENTIDADES
 
-Com base na análise de processos, foram identificadas as seguintes entidades: 
+Com base na análise de processos, foram identificadas as seguintes entidades:
+
   ⦁	PESSOA: Representa a entidade genérica que centraliza os dados comuns a indivíduos no sistema, servindo como supertipo para Cliente e Funcionário a fim de evitar redundância de atributos como nome e CPF.
-  ⦁	CLIENTE: Dados específicos do contratante que realiza cotações e contratos de locação, vinculado a uma PESSOA. 
-  ⦁	FUNCIONÁRIO: Dados do colaborador interno (Administrador, Comercial e Estoque), vinculado a uma PESSOA. 
+  
+  ⦁	CLIENTE: Dados específicos do contratante que realiza cotações e contratos de locação, vinculado a uma PESSOA.
+  
+  ⦁	FUNCIONÁRIO: Dados do colaborador interno (Administrador, Comercial e Estoque), vinculado a uma PESSOA.
+  
   ⦁	ENDEREÇO: Armazena os endereços de Pessoa (Cliente/Funcionário) e os locais de entrega/retirada da Locação.
+  
   ⦁	PESSOA_ENDEREÇO: Entidade associativa entre PESSOA e ENDEREÇO, que registra os vínculos e a finalidade (entrega, cobrança ou comercial) de cada endereço cadastrado.
-  ⦁	CATEGORIA: Agrupa os produtos do acervo por classe/tipo (ex.: Mobiliário, Brinquedos). 
-  ⦁	PRODUTO: Representa os materiais do inventário disponíveis para locação. 
-  ⦁	COTAÇÃO: Registra os orçamentos solicitados pelos clientes. 
-  ⦁	ITEM_COTAÇÃO: Entidade associativa entre COTAÇÃO e PRODUTO. 
-  ⦁	LOCAÇÃO: Registra os contratos de locação formalizados. 
-  ⦁	PAGAMENTO: Armazena os lançamentos financeiros (sinais, quitações e multas). 
-  ⦁	AVARIA: Registra os laudos de vistoria e evidências de danos na devolução. 
+  
+  ⦁	CATEGORIA: Agrupa os produtos do acervo por classe/tipo (ex.: Mobiliário, Brinquedos).
+  
+  ⦁	PRODUTO: Representa os materiais do inventário disponíveis para locação.
+  
+  ⦁	COTAÇÃO: Registra os orçamentos solicitados pelos clientes.
+  
+  ⦁	ITEM_COTAÇÃO: Entidade associativa entre COTAÇÃO e PRODUTO.
+  
+  ⦁	LOCAÇÃO: Registra os contratos de locação formalizados.
+  
+  ⦁	PAGAMENTO: Armazena os lançamentos financeiros (sinais, quitações e multas).
+  
+  ⦁	AVARIA: Registra os laudos de vistoria e evidências de danos na devolução.
+  
   ⦁	MULTA: Armazena as penalidades financeiras emitidas por atraso ou avaria.
+
+
 
 ## ETAPA 11 - IDENTIFICAÇÃO DOS ATRIBUTOS
 
@@ -432,6 +679,8 @@ Com base na análise de processos, foram identificadas as seguintes entidades:
 | PAGAMENTO | id_pagamento (PK), valor, data_pagamento, forma_pagamento, tipo, status_pagamento |
 | AVARIA | id_avaria (PK), classificacao, descricao_dano, evidencias, data_registro |
 | MULTA | id_multa (PK), motivo, valor_multa, status_pagamento |
+
+
 
 ## ETAPA 12 - IDENTIFICAÇÃO DOS RELACIONAMENTOS
 
@@ -454,9 +703,12 @@ Com base na análise de processos, foram identificadas as seguintes entidades:
 - **MULTA — PAGAMENTO:** O pagamento de uma penalidade quita a multa vinculada.
 - **FUNCIONÁRIO — AVARIA:** O funcionário da logística assina a vistoria e o laudo de avaria.
 
+
+
 ## ETAPA 13 - DETERMINAÇÃO DAS CARDINALIDADES
 
 A cardinalidade mínima e máxima de cada um dos vinte relacionamentos binários identificados na ETAPA 12 foi determinada com base nas regras de negócio das ETAPAS 03 a 08, seguindo a notação (mínimo, máximo): 
+
 o mínimo define a participação da entidade — total (1) ou parcial (0) — e o máximo define a multiplicidade do vínculo (1 ou N).
 
   ⦁	PESSOA (1,1) ↔ (0,1) CLIENTE: A pessoa pode ainda não ter se cadastrado como cliente (0, participação parcial da pessoa) ou possuir no máximo 1 cadastro de cliente. Todo CLIENTE, por outro lado, corresponde a exatamente 1 única pessoa (participação total do cliente), evitando duplicidade de dados cadastrais.
@@ -503,16 +755,20 @@ o mínimo define a participação da entidade — total (1) ou parcial (0) — e
 ## ETAPA 14 - VERIFICAÇÃO DE RELACIONAMENTOS N:N EXISTENTES
 
 No modelo de negócios, foram identificados dois relacionamentos muitos-para-muitos (N:N): 
+
   ⦁	COTAÇÃO × PRODUTO: Uma cotação pode possuir diversos produtos e um produto pode figurar em várias cotações. 
+  
   ⦁	Solução: Criação da entidade associativa ITEM_COTAÇÃO.
   
   ⦁	PESSOA × ENDEREÇO: Uma pessoa pode ter múltiplos endereços registrados (entrega, cobrança, comercial) e um mesmo endereço pode estar vinculado a mais de uma pessoa.
+  
   ⦁	Solução: Criação da entidade associativa PESSOA_ENDEREÇO.
 
 
 ## ETAPA 15 - VERIFICAÇÃO DE RELACIONAMENTOS COM ATRIBUTOS
 
 As entidades associativas criadas passam a armazenar atributos próprios das associações: 
+
   ⦁	ITEM_COTAÇÃO: Armazena quantidade (unidades do produto cotadas) e valor unitário (valor da diária unitária praticada no orçamento).
   
   ⦁	PESSOA_ENDEREÇO: Armazena tipo de endereço (classificação da finalidade do local vinculado à pessoa, como entrega, cobrança ou comercial).
@@ -527,6 +783,7 @@ As entidades associativas criadas passam a armazenar atributos próprios das ass
 ## ETAPA 17 - CONSTRUÇÃO DO DICIONÁRIO DE DADOS CONCEITUAL
 
 **Entidade: PESSOA**
+
 Centraliza os dados cadastrais comuns de identificação (pessoa física ou jurídica), servindo de base para os registros de CLIENTE e FUNCIONÁRIO e evitando duplicidade de nome, documento e contato.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -542,6 +799,7 @@ Centraliza os dados cadastrais comuns de identificação (pessoa física ou jur�
 
 
 **Entidade: CLIENTE**
+
 Representa pessoas físicas ou jurídicas que realizam cotações e contratam locações de materiais para eventos na plataforma.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -554,6 +812,7 @@ Representa pessoas físicas ou jurídicas que realizam cotações e contratam lo
 
 
 **Entidade: FUNCIONÁRIO**
+
 Armazena as informações dos colaboradores que operam o sistema e gerenciam as áreas comercial, logística e administrativa.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -568,6 +827,7 @@ Armazena as informações dos colaboradores que operam o sistema e gerenciam as 
 
 
 **Entidade: ENDEREÇO**
+
 Registra os locais físicos cadastrados para pessoas e clientes para entrega e retirada dos produtos locados.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -583,6 +843,7 @@ Registra os locais físicos cadastrados para pessoas e clientes para entrega e r
 
 
 **Entidade ASSOCIATIVA: PESSOA_ENDEREÇO**
+
 Associa pessoas a um ou mais endereços cadastrados, indicando a finalidade de cada vínculo e permitindo que um mesmo endereço seja compartilhado entre pessoas.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -593,6 +854,7 @@ Associa pessoas a um ou mais endereços cadastrados, indicando a finalidade de c
 
 
 **Entidade: CATEGORIA**
+
 Classifica e agrupa os produtos do acervo para estruturar a busca no catálogo.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -604,6 +866,7 @@ Classifica e agrupa os produtos do acervo para estruturar a busca no catálogo.
 
 
 **Entidade: PRODUTO**
+
 Cadastra os materiais físicos disponíveis no acervo da empresa para locação em eventos.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -622,6 +885,7 @@ Cadastra os materiais físicos disponíveis no acervo da empresa para locação 
 
 
 **Entidade: COTAÇÃO**
+
 Registra a solicitação de orçamento elaborada pelo cliente contendo as datas desejadas para a festa.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -638,6 +902,7 @@ Registra a solicitação de orçamento elaborada pelo cliente contendo as datas 
 
 
 **Entidade ASSOCIATIVA: ITEM_COTAÇÃO**
+
 Associa as entidades COTAÇÃO e PRODUTO, registrando a quantidade de itens solicitados em um orçamento específico.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -649,6 +914,7 @@ Associa as entidades COTAÇÃO e PRODUTO, registrando a quantidade de itens soli
 
 
 **Entidade: LOCAÇÃO**
+
 Representa o contrato de locação formalizado entre a empresa e o cliente.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -667,6 +933,7 @@ Representa o contrato de locação formalizado entre a empresa e o cliente.
 
 
 **Entidade: PAGAMENTO**
+
 Registra os fluxos financeiros de recebimento vinculados a um contrato de locação (sinal, quitação e multas).
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -682,6 +949,7 @@ Registra os fluxos financeiros de recebimento vinculados a um contrato de locaç
 
 
 **Entidade: AVARIA**
+
 Registra laudos técnicos e evidências de danos identificados em materiais durante a conferência de devolução.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -697,6 +965,7 @@ Registra laudos técnicos e evidências de danos identificados em materiais dura
 
 
 **Entidade: MULTA**
+
 Registra a emissão de cobranças financeiras decorrentes de atrasos na devolução ou laudos de avarias.
 
 | Nome do Campo | Tipo de Dado | Tamanho/Precisão | Nulo? | Chave | Descrição / Regra de Negócio |
@@ -710,6 +979,7 @@ Registra a emissão de cobranças financeiras decorrentes de atrasos na devoluç
 
 
 **17.2 Classificação das Entidades Quanto à Dependência de Existência**
+
 Seguindo o critério de dependência de existência/identificação estudado em aula, cada entidade do modelo foi classificada como forte, fraca ou associativa. É importante destacar que o uso de uma chave substituta (id_com auto incremento) não torna uma entidade forte automaticamente: a chave substituta é apenas uma conveniência técnica de indexação, enquanto a dependência semântica em relação à entidade proprietária permanece a mesma.
 
 | Entidade | Classificação | Depende de | Justificativa |
@@ -732,24 +1002,31 @@ Seguindo o critério de dependência de existência/identificação estudado em 
 ETAPA 18 - JUSTIFICATIVA DAS PRINCIPAIS DECISÕES
 
 ⦁	Adoção do Sistema Gerenciador de Banco de Dados Relacional (SGBD MySQL):
+
 A escolha do MySQL fundamenta-se na necessidade de assegurar as propriedades ACID (Atomicidade, Consistência, Isolamento e Durabilidade), garantindo a integridade transacional dos contratos, pagamentos e controle rigoroso de saldo de estoque em tempo real. 
 
 ⦁	Criação da Entidade Associativa (ITEM_COTAÇÃO):
+
 A decomposição do relacionamento N:N entre COTAÇÃO e PRODUTO, por meio da entidade ITEM_COTAÇÃO, eliminou redundâncias de dados e possibilitou o armazenamento individualizado de quantidades e valores unitários das diárias praticadas em cada orçamento. Como toda LOCAÇÃO deriva de exatamente 1 COTAÇÃO aprovada (relacionamento 1:1), os mesmos registros de ITEM_COTAÇÃO também representam os itens confirmados do contrato de locação, dispensando uma segunda tabela de itens e evitando duplicidade de dados entre a fase de orçamento e a fase de contrato.
 
 ⦁	Gerenciamento de Estados via Tipos Enumerados (ENUM):
+
 O uso de tipos ENUM para os status de clientes (Ativo, Locado, Bloqueado), produtos (Disponível, Pré-locado, Locado, Em Manutenção, Inutilizado/Perda) e cotações evita a inserção de valores inválidos e simplifica as regras de transição operacional no sistema. 
 
 ⦁	Exigência de Laudo com Fotos para Lançamento de Avarias:
+
 A obrigatoriedade de vincular no mínimo duas imagens comprobatórias e a assinatura do funcionário aos laudos de avaria assegura fundamentação técnica e transparência jurídica para a cobrança das multas, reduzindo disputas comerciais com clientes. 
 
 ⦁	Exigência do Sinal de 50% para Efetivação da Reserva:
+
 A regra de negócio que condiciona a conversão da cotação em locação ao pagamento do sinal de 50% garante o compromisso financeiro do cliente e evita o bloqueio indevido do estoque por reservas especulativas não confirmadas. 
 
 ⦁	Criação da Entidade PESSOA (Generalização/Especialização):
+
 CLIENTE e FUNCIONÁRIO compartilhavam os mesmos dados de identificação (nome, documento, e-mail e telefone), o que gerava duplicidade de estrutura no modelo. A entidade PESSOA foi criada como generalização desses dados comuns, com CLIENTE e FUNCIONÁRIO passando a se especializar dela por meio de uma chave estrangeira (id_pessoa). Essa decisão mantém CLIENTE e FUNCIONÁRIO com identificação própria (id_cliente e id_funcionario), guardando neles apenas os dados específicos de cada papel, elimina a repetição de atributos e permite que, futuramente, uma mesma pessoa venha a acumular os dois papéis sem duplicar seus dados cadastrais.
 
 ⦁	Criação da Entidade Associativa PESSOA_ENDEREÇO:
+
 Uma pessoa pode ter vários endereços (entrega, cobrança, comercial) e um mesmo endereço pode ser usado por mais de uma pessoa, como membros da mesma família ou de uma mesma empresa. Esse relacionamento N:N foi resolvido pela entidade associativa PESSOA_ENDEREÇO, com chave primária composta (id_pessoa, id_endereco) e o atributo tipo_endereco, que classifica a finalidade de cada vínculo, evitando o cadastro repetido do mesmo local.
 
 
@@ -758,54 +1035,81 @@ ANEXO A - GESTÃO DE ORÇAMENTO, CAIXA E TICKET MÉDIO
 Este anexo complementa as ETAPAS 05, 07 e 17, descrevendo em linguagem corrida como os requisitos e as regras financeiras já definidos (Módulos 03, 05, 06 e 07) se conectam na rotina da empresa, a partir das entidades COTAÇÃO, LOCAÇÃO, PAGAMENTO, AVARIA e MULTA. Nada do que foi definido nas etapas anteriores é alterado: o texto apenas explica e relaciona o que já consta no trabalho.
 
 A.1 Gestão de Orçamento e Caixa
+
 Cuidar do dinheiro da empresa vai muito além de registrar pagamentos. É importante saber quanto a empresa tem para receber, quais locações já foram pagas, quais clientes ainda possuem valores pendentes e quais cobranças surgiram após a devolução dos produtos.
 Por isso, a gestão de orçamento e caixa será integrada ao sistema de locações. Dessa forma, quando um cliente solicitar um orçamento, o sistema já registra o valor total da contratação (atributo valor_total da COTAÇÃO) e acompanha todo o caminho financeiro até o encerramento da locação.
 
 Como funciona na prática
+
 Tudo começa com o orçamento. O cliente escolhe os produtos que precisa para sua festa, informa a data do evento e recebe uma cotação com os itens, quantidades, valores e valor total. Essa cotação fica disponível por 48 horas (Módulo 03 – RN02) e, para que a reserva seja realmente confirmada, o cliente precisa realizar o pagamento de um sinal correspondente a 50% do valor da locação (Módulo 03 – RN03).
 
 Depois que o sinal é identificado, o sistema transforma o orçamento em uma locação confirmada (Módulo 05 – RN01) e registra esse recebimento no financeiro, como um lançamento da entidade PAGAMENTO vinculado à LOCAÇÃO. O restante dos 50% deve ser pago até a retirada dos produtos (Módulo 05 – RN02). Assim, a empresa consegue visualizar com facilidade o que já entrou no caixa e o que ainda precisa ser recebido.
 
 Controle do caixa
+
 O caixa deve apresentar de forma simples os valores que entram e os valores que ainda estão previstos para entrar. Entre os principais recebimentos estão:
+
 ⦁	sinais de 50% das locações;
+
 ⦁	pagamentos dos saldos restantes;
+
 ⦁	valores de multas por atraso;
+
 ⦁	cobranças relacionadas a avarias ou perda de produtos;
+
 ⦁	outros recebimentos vinculados aos contratos.
 
+
 Cada pagamento deve ficar relacionado à respectiva locação, permitindo consultar o valor, a data, a forma de pagamento e o status da quitação, informações que correspondem aos campos valor, data_pagamento, forma_pagamento e status_pagamento da entidade PAGAMENTO. O sistema também deve manter o histórico financeiro de cada cliente.
+
 Além disso, o sistema permite trabalhar com diferentes formas de pagamento, como Pix, boleto e cartão. Isso facilita a rotina do cliente e, ao mesmo tempo, evita que a equipe precise procurar comprovantes em diferentes lugares.
 
 Acompanhamento do que ainda falta receber
+
 Um dos pontos mais importantes para o controle do caixa é não olhar somente para aquilo que já foi pago. A empresa também precisa saber o que está pendente.
+
 Por exemplo, se uma locação custa R$ 1.000,00, o sistema registra o recebimento inicial de R$ 500,00 e deixa os outros R$ 500,00 como saldo pendente até que o cliente faça a quitação.
+
 Valor da locação → Sinal recebido → Saldo pendente → Pagamento final → Situação da locação.
+
 Essa sequência corresponde ao valor_total da LOCAÇÃO, aos lançamentos de PAGAMENTO dos tipos Sinal e Saldo e ao status da locação (Ativa, Concluída ou Cancelada).
 
 Controle de multas e avarias
+
 A gestão financeira também continua depois da festa. Quando os produtos retornam, a equipe realiza uma vistoria. Caso exista atraso ou algum produto tenha sido danificado, a ocorrência pode gerar uma cobrança adicional.
+
 O sistema registra a avaria, o laudo, as evidências e a multa correspondente (entidades AVARIA e MULTA, relacionadas na proporção 1:1 conforme a ETAPA 13). Em caso de atraso superior a 24 horas, por exemplo, existe uma regra definida no projeto para cobrança de uma diária integral mais 10% de multa ao dia (Módulo 06 – RN02). Já situações de perda possuem uma regra específica de cobrança pelo valor de reposição (Módulo 06 – RN03).
 
 Visão do orçamento da empresa
+
 Além de controlar o dinheiro recebido dos clientes, a gestão de orçamento deve ajudar a empresa a entender sua própria situação financeira.
+
 O gestor poderá acompanhar os valores previstos e realizados, observando:
-⦁	quanto foi faturado com as locações;
-⦁	quanto já foi recebido;
-⦁	quanto ainda está em aberto;
-⦁	quanto entrou por meio de multas;
-⦁	quais contratos estão pendentes;
-⦁	quais períodos tiveram maior movimentação financeira;
-⦁	quais produtos geram maior receita.
+
+  ⦁	quanto foi faturado com as locações;
+  
+  ⦁	quanto já foi recebido;
+  
+  ⦁	quanto ainda está em aberto;
+  
+  ⦁	quanto entrou por meio de multas;
+  
+  ⦁	quais contratos estão pendentes;
+  
+  ⦁	quais períodos tiveram maior movimentação financeira;
+  
+  ⦁	quais produtos geram maior receita.
 
 Com essas informações organizadas no sistema, o financeiro deixa de depender de anotações espalhadas em WhatsApp, cadernos e planilhas e passa a fazer parte de uma visão integrada de toda a empresa. Essa integração atende diretamente a um dos principais problemas identificados no projeto e é apoiada pelos relatórios do Módulo 07 (RF02 – filtro por período, RF03 – relatório financeiro, RF08 – curva ABC e RF09 – inadimplência).
 
 A.2 Ticket Médio
 
 O ticket médio é um indicador que ajuda a entender, de forma simples, quanto cada cliente costuma gastar, em média, em uma locação.
+
 Como a empresa trabalha com diferentes tipos de produtos e cada festa possui necessidades diferentes, o valor de uma locação pode variar bastante. Um cliente pode contratar apenas mesas e cadeiras, enquanto outro pode precisar de uma estrutura mais completa, com toalhas, louças, decoração, brinquedos, iluminação e outros itens.
 
 Ticket Médio = Faturamento total das locações ÷ Número de locações realizadas
+
 Por exemplo, se em determinado período realizarmos 10 locações e faturarmos R$ 10.000,00, o ticket médio será de R$ 1.000,00 por locação.
 
 Esse indicador permite que a empresa tenha uma visão mais clara do seu desempenho comercial. Em vez de olhar somente para o faturamento total, a gestão consegue perceber quanto cada contrato representa, em média, para o negócio.
